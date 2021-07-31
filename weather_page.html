@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel ="stylesheet" href = "stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+   <nav class="navbar has-shadow is-light">
+
+        <div class="navbar-brand">
+            <a class='navbar-item'>
+                <img src="assets/logo.png" alt="site logo" style="max-height: 70px;">
+            </a>
+        </div>
+        <div class="navbar-menu" id="nav-links">
+            <div class="navbar-end" class="py-2 px-2">
+                <a class="navbar-item">Github</a>
+                <a class="navbar-item">Contact Me</a>
+            </div>
+        </div>
+   </nav>
+
+</head>
+<body>
+    <div class = "bg">
+        <div class="topic">
+            <img src="assets/logo.png" style="max-height: 80px;">
+            <h1 class="title">Weather App</h1>
+            <p class="subtitle">Simply get the weather</p>
+        </div>
+
+        <form class="locationSearchClass" id="locationSearch" >
+            <input type="text" id = "locationInput" class = "inputClass" name="location" placeholder="Search...">
+            <button type="submit" class= 'submitClass'><i class = "fa fa-search"></i></button>
+        </form>
+
+        <!-- <div class = "weatherInfoClass" id = "weatherInfo">
+            <p id = "city"></p>
+            <p id = "weather"></p>
+        </div> -->
+
+
+        <div class="weatherInfoClass" id="weatherInfo">
+            <h1 class = "title is-1" id="temperature"></h1>
+            <p id = "city" class="title is-2"></p>
+            <p id = "weather" class="title is-3"></p>
+            <p id = 'humidity' class = "title is-3"></p>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
