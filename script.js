@@ -23,6 +23,7 @@ function getWeather(place){
     })
     .then(function(response){
         setBackground(response.weather[0].main,weatherInfo,bodyBackground)
+        setGifBackground(response.weather[0].main,bodyBackground)
         console.log({response})
         temperature.innerHTML = Math.floor(response.main.temp) + '˚C'
         city.innerHTML = response.name
@@ -33,22 +34,40 @@ function getWeather(place){
 
 }
 
+function setGifBackground(weather_main, bodyBackground){
+    // ---Using gifs----
+    fetch(`https://api.giphy.com/v1/gifs/translate?api_key=5hDzPncTiUhsV1aycrhD0t9NQFE41U4h&s=${weather_main}+sky`, {mode: 'cors'})
+        .then(function(response) {
+        return response.json();
+        })
+        .then(function(response) {
+            console.log({response})
+            let url = response.data.images.original.url
+
+            bodyBackground.style.backgroundImage = `url(${url})`
+            console.log(bodyBackground.style.background)
+        });
+
+}
+
+
 function setBackground(weather_main,weatherInfo,bodyBackground){
 
     if(weather_main==='Rain'){
         weatherInfo.style.background= 'linear-gradient(0deg, rgba(3,152,152,1) 2%, rgba(0,93,249,1) 81%, rgba(16,5,241,1) 99%)'
-        bodyBackground.style.backgroundImage = 'url("assets/rainy_gif.jpeg")'
+        // ----Preloaded Image----
+        // bodyBackground.style.backgroundImage = 'url("assets/rainy_gif.jpeg")'
 
     } else if (weather_main === 'Clouds'){
         weatherInfo.style.background='linear-gradient(180deg, rgba(20,221,223,1) 0%, rgba(42,144,249,1) 54%, rgba(118,124,133,1) 92%)'
-        bodyBackground.style.backgroundImage = 'url("assets/cloudy.jpeg")'
+        // bodyBackground.style.backgroundImage = 'url("assets/cloudy.jpeg")'
 
     } else if(weather_main === 'Clear'){
         weatherInfo.style.background ='linear-gradient(0deg, rgba(5,251,251,1) 22%, rgba(0,249,210,1) 49%, rgba(5,241,207,1) 85%)'
-        bodyBackground.style.backgroundImage = 'url("assets/clear_sky.jpeg")'
+        // bodyBackground.style.backgroundImage = 'url("assets/clear_sky.jpeg")'
 
     } else if (weather_main==='Sunny'){
         weatherInfo.style.background = 'linear-gradient(180deg, rgba(244,146,9,1) 0%, rgba(242,222,30,1) 52%)'
-        bodyBackground.style.backgroundImage = 'url("assets/sunny.jpeg")'
+        // bodyBackground.style.backgroundImage = 'url("assets/sunny.jpeg")'
     }
 }
